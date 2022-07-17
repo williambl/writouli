@@ -2,11 +2,21 @@ import {string} from "prop-types";
 import {Component} from "react";
 
 export class Page {
+    constructor(key: number) {
+        this.key = key;
+        this.type = "";
+        this.advancement = "";
+        this.flag = "";
+        this.anchor = "";
+        this.customFields = [];
+    }
+
+    key: number;
+
     type: string;
     advancement: string;
     flag: string;
     anchor: string;
-    key: number;
 
     customFields: PageField<any>[]
 }
@@ -40,4 +50,8 @@ const pageFieldsForType: Record<string, (PageField<any>)[]> = {
 
 export function setType(page: Page, type: string): Page {
     return {...page, type: type, customFields: Object.hasOwn(pageFieldsForType, type) ? pageFieldsForType[type] : []}
+}
+
+export function nextKey(pages: Page[]): number {
+    return pages.length > 0 ? Math.max(...pages.map(p => p.key))+1 : 0
 }

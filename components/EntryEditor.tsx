@@ -1,6 +1,8 @@
 import {useState} from "react";
 import {Entry} from "../lib/entry";
 import PageEditor from "./PageEditor";
+import {nextKey, Page} from "../lib/page";
+import {replace} from "../lib/util";
 
 export default function EntryEditor() {
     const [entry, setEntry] = useState<Entry>({category: "", icon: "", name: "", pages: []});
@@ -24,12 +26,15 @@ export default function EntryEditor() {
             <br/>
             <label>
                 Pages:
-                {entry.pages.map(page => <PageEditor key={page.key} page={page} setPage={newPage => setEntry({...entry, pages: entry.pages.map(e => e.key === newPage.key ? newPage : e)})} removePage={toDelete => {
-                    setEntry({ ...entry, pages: entry.pages.filter(p => p.key !== toDelete.key) })
-                }}/>)}
-                <button onClick={() => {
-                    setEntry({...entry, pages: [...entry.pages, {type: "", advancement: "", flag: "", anchor: "", key: entry.pages.length > 0 ? Math.max(...entry.pages.map(p => p.key))+1 : 0, customFields: []}]})
-                }}>+</button>
+                {
+                    entry.pages.map(page => <PageEditor
+                        key={page.key}
+                        page={page}
+                        setPage={newPage => setEntry({...entry, pages: replace(entry.pages, e => e.key === newPage.key, newPage)})}
+                        removePage={toDelete => setEntry({...entry, pages: entry.pages.filter(p => p.key !== toDelete.key)})}
+                    />)
+                }
+                <button onClick={() => setEntry({...entry, pages: [...entry.pages, new Page(nextKey(entry.pages))]})}>+</button>
             </label>
         </fieldset>
     )
