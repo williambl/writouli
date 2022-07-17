@@ -35,15 +35,37 @@ export class PageField<T> {
 
 const pageFieldsForType: Record<string, (PageField<any>)[]> = {
     'patchouli:text': [
-        new PageField(
-            "text",
-            "",
-            (changeField) => <label>Text:<input onChange={c => changeField(c.target.value)}/></label>
-        ),
         new PageField<string>(
             "title",
             "",
             (changeField) => <label>Title:<input onChange={c => changeField(c.target.value)}/></label>
+        ),
+        new PageField(
+            "text",
+            "",
+            (changeField) => <label>Text:<input onChange={c => changeField(c.target.value)}/></label> //TODO: rich text
+        )
+    ],
+    'patchouli:image': [
+        new PageField<string>(
+            "title",
+            "",
+            (changeField) => <label>Title:<input onChange={c => changeField(c.target.value)}/></label>
+        ),
+        new PageField(
+            "images",
+            [],
+            (changeField) => <label>Images:<input onChange={c => changeField(c.target.value.split(' '))}/></label> //TODO do this in a better way
+        ),
+        new PageField(
+            "border",
+            false,
+            (changeField) => <label>Has Border:<input type="checkbox" onChange={c => changeField(c.target.checked)}/></label>
+        ),
+        new PageField(
+            "text",
+            "",
+            (changeField) => <label>Text:<input onChange={c => changeField(c.target.value)}/></label>
         )
     ]
 }
