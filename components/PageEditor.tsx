@@ -1,6 +1,7 @@
 import {useState} from "react";
 import {Entry} from "../lib/entry";
 import {Page, setType} from "../lib/page";
+import {replace} from "../lib/util";
 
 export default function PageEditor(props: {page: Page, setPage: (Page) => void, removePage: (Page) => void}) {
     return (
@@ -31,7 +32,7 @@ export default function PageEditor(props: {page: Page, setPage: (Page) => void, 
             </label>
             <br/>
             <label>
-                {props.page.customFields.map(f => <div key={f.name}>{f.editorComponent(newData => props.setPage({ ...props.page, customFields: [...props.page.customFields, {...f, 'data': newData }] }))}</div>)}
+                {props.page.customFields.map(field => <div key={field.name}>{field.editorComponent(newData => props.setPage({ ...props.page, customFields: replace(props.page.customFields, (f) => field.name === f.name, {...field, data: newData })}))}</div>)}
             </label>
         </fieldset>
     )
