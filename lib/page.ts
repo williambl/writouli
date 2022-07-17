@@ -7,7 +7,7 @@ export class Page {
     flag: string | null;
     anchor: string | null;
 
-    customFields: [PageField<any>]
+    customFields: PageField<any>[]
 }
 
 export abstract class PageField<T> {
