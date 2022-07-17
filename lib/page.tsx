@@ -6,6 +6,7 @@ export class Page {
     advancement: string;
     flag: string;
     anchor: string;
+    key: number;
 
     customFields: PageField<any>[]
 }

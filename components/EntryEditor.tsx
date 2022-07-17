@@ -24,7 +24,12 @@ export default function EntryEditor() {
             <br/>
             <label>
                 Pages:
-                <PageEditor />
+                {entry.pages.map(page => <PageEditor key={page.key} page={page} setPage={newPage => setEntry({...entry, pages: entry.pages.map(e => e.key === newPage.key ? newPage : e)})} removePage={toDelete => {
+                    setEntry({ ...entry, pages: entry.pages.filter(p => p.key !== toDelete.key) })
+                }}/>)}
+                <button onClick={() => {
+                    setEntry({...entry, pages: [...entry.pages, {type: "", advancement: "", flag: "", anchor: "", key: entry.pages.length > 0 ? Math.max(...entry.pages.map(p => p.key))+1 : 0, customFields: []}]})
+                }}>+</button>
             </label>
         </fieldset>
     )

@@ -2,48 +2,36 @@ import {useState} from "react";
 import {Entry} from "../lib/entry";
 import {Page, setType} from "../lib/page";
 
-export default function PageEditor() {
-    const [page, setPage] = useState<Page>(setType({
-        type: "",
-        advancement: "",
-        anchor: "",
-        flag: "",
-        customFields: []
-    }, ""));
-
+export default function PageEditor(props: {page: Page, setPage: (Page) => void, removePage: (Page) => void}) {
     return (
         <fieldset>
+            <button onClick={() => props.removePage(props.page)}>-</button>
+            <br/>
             <label>
                 Type:
-                <input type="text" defaultValue={page.type} onChange={change => setPage(entry => setType(
-                    entry,
+                <input type="text" defaultValue={props.page.type} onChange={change => props.setPage(setType(
+                    props.page,
                     change.target.value
                 ))}/>
             </label>
             <br/>
             <label>
                 Advancement:
-                <input type="text" defaultValue={page.advancement} onChange={change => setPage(entry => {
-                    return { ...entry, advancement: change.target.value }
-                })}/>
+                <input type="text" defaultValue={props.page.advancement} onChange={change => props.setPage({ ...props.page, advancement: change.target.value })}/>
             </label>
             <br/>
             <label>
                 Flag:
-                <input type="text" defaultValue={page.flag} onChange={change => setPage(entry => {
-                    return { ...entry, flag: change.target.value }
-                })}/>
+                <input type="text" defaultValue={props.page.flag} onChange={change => props.setPage({ ...props.page, flag: change.target.value })}/>
             </label>
             <br/>
             <label>
                 Anchor:
-                <input type="text" defaultValue={page.anchor} onChange={change => setPage(entry => {
-                    return { ...entry, anchor: change.target.value }
-                })}/>
+                <input type="text" defaultValue={props.page.anchor} onChange={change => props.setPage({ ...props.page, anchor: change.target.value })}/>
             </label>
             <br/>
             <label>
-                {page.customFields.map(f => <div key={f.name}>{f.editorComponent(newData => setPage(page => {return {...page, customFields: [...page.customFields, {...f, 'data': newData }]}}))}</div>)}
+                {props.page.customFields.map(f => <div key={f.name}>{f.editorComponent(newData => props.setPage({ ...props.page, customFields: [...props.page.customFields, {...f, 'data': newData }] }))}</div>)}
             </label>
         </fieldset>
     )
