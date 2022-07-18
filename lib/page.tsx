@@ -1,6 +1,8 @@
 import {string} from "prop-types";
 import {Component} from "react";
 import LabelledTextInput from "../components/LabelledTextInput";
+import RichTextEditor from "../components/RichTextEditor";
+import {EditorState} from "lexical";
 
 export class Page {
     constructor(key: number) {
@@ -41,11 +43,11 @@ const pageFieldsForType: Record<string, (PageField<any>)[]> = {
             "",
             (changeField) => <LabelledTextInput label="Title:" onChange={c => changeField(c.target.value)} />
         ),
-        new PageField(
+        new PageField<EditorState>(
             "text",
-            "",
-            (changeField) => <LabelledTextInput label="Text:" onChange={c => changeField(c.target.value)} /> //TODO: rich text
-        )
+            null,
+            (changeField) => <RichTextEditor onChange={c => changeField(c)} />
+        ),
     ],
     'patchouli:image': [
         new PageField<string>(
