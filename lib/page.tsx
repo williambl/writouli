@@ -1,5 +1,6 @@
 import {string} from "prop-types";
 import {Component} from "react";
+import LabelledTextInput from "../components/LabelledTextInput";
 
 export class Page {
     constructor(key: number) {
@@ -38,24 +39,24 @@ const pageFieldsForType: Record<string, (PageField<any>)[]> = {
         new PageField<string>(
             "title",
             "",
-            (changeField) => <label>Title:<input onChange={c => changeField(c.target.value)}/></label>
+            (changeField) => <LabelledTextInput label="Title:" onChange={c => changeField(c.target.value)} />
         ),
         new PageField(
             "text",
             "",
-            (changeField) => <label>Text:<input onChange={c => changeField(c.target.value)}/></label> //TODO: rich text
+            (changeField) => <LabelledTextInput label="Text:" onChange={c => changeField(c.target.value)} /> //TODO: rich text
         )
     ],
     'patchouli:image': [
         new PageField<string>(
             "title",
             "",
-            (changeField) => <label>Title:<input onChange={c => changeField(c.target.value)}/></label>
+            (changeField) => <LabelledTextInput label="Title:" onChange={c => changeField(c.target.value)} />
         ),
         new PageField(
             "images",
             [],
-            (changeField) => <label>Images:<input onChange={c => changeField(c.target.value.split(' '))}/></label> //TODO do this in a better way
+            (changeField) => <LabelledTextInput label="Images:" onChange={c => changeField(c.target.value)} />
         ),
         new PageField(
             "border",
@@ -65,7 +66,7 @@ const pageFieldsForType: Record<string, (PageField<any>)[]> = {
         new PageField(
             "text",
             "",
-            (changeField) => <label>Text:<input onChange={c => changeField(c.target.value)}/></label>
+            (changeField) => <LabelledTextInput label="Text:" onChange={c => changeField(c.target.value)} />
         )
     ]
 }
