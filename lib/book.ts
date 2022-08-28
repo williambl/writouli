@@ -1,4 +1,6 @@
 import {TranslationContext} from "./translations";
+import Category from "./category";
+import {randomId} from "./util";
 
 export class Book {
     id: string;
@@ -12,6 +14,22 @@ export class Book {
     subtitle: string;
     creativeTab: string;
     pamphlet: boolean;
+    categories: Category[];
+
+    constructor() {
+        this.id = randomId();
+        this.name = "";
+        this.landingText = "";
+        this.bookTexture = "";
+        this.fillerTexture = "";
+        this.craftingTexture = "";
+        this.model = "";
+        this.version = "";
+        this.subtitle = "";
+        this.creativeTab = "";
+        this.pamphlet = false;
+        this.categories = [];
+    }
 
     toJson(translationContext: TranslationContext): any {
         return {

@@ -3,7 +3,7 @@ import JSZip from "jszip";
 import {TranslationContext, Translations} from "./translations";
 import {Book} from "./book";
 
-export default async function createZip(book: Book, categories: Category[]): Promise<Blob> {
+export default async function createZip(book: Book): Promise<Blob> {
     const zip = new JSZip();
     const translations = new Translations();
 
@@ -14,18 +14,18 @@ export default async function createZip(book: Book, categories: Category[]): Pro
 
     const catZip = bookZip.folder("en_us/categories")
     const entriesZip = bookZip.folder("en_us/entries")
-    categories.forEach(category => {
+    book.categories.forEach(category => {
         const catTransContext = bookTransContext.create(category.id);
-        catZip.file(category.id, JSON.stringify(category.toJson(book, catTransContext)))
+        catZip.file(`${category.id}.json`, JSON.stringify(category.toJson(book, catTransContext)))
 
         category.entries.forEach(entry => {
             const entryTransContext = catTransContext.create(entry.id);
-            entriesZip.file(entry.id, JSON.stringify(entry.toJson(category, book, entryTransContext)))
+            entriesZip.file(`${entry.id}.json`, JSON.stringify(entry.toJson(category, book, entryTransContext)))
         })
     })
 
     const langZip = zip.folder(`assets/${bookId[0]}/lang/`);
-    langZip.file("en_us.json", JSON.stringify(translations.translations))
+    langZip.file("en_us.json", JSON.stringify(Object.fromEntries(translations.translations)))
 
     return await zip.generateAsync({type: "blob"});
 }
