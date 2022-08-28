@@ -4,6 +4,8 @@ import LabelledTextInput from "../components/LabelledTextInput";
 import {EditorState} from "lexical";
 import {Book} from "./book";
 import {TranslationContext} from "./translations";
+import { Entry } from "./entry";
+import {randomUUID} from "crypto";
 
 export class Page {
     constructor(key: number) {

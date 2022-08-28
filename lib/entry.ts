@@ -9,6 +9,13 @@ export class Entry {
     icon: string;
     pages: Page[];
 
+    constructor(id: string, name: string, icon: string, pages: Page[]) {
+        this.id = id;
+        this.name = name;
+        this.icon = icon;
+        this.pages = pages;
+    }
+
     toJson(category: Category, book: Book, translationContext: TranslationContext): any {
         return {
             'name': translationContext.addTranslation("name", this.name),

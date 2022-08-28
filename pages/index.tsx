@@ -2,6 +2,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import EntryEditor from "../components/EntryEditor";
+import CategoryEditor from "../components/CategoryEditor";
 
 export default function Home() {
   return (
@@ -17,7 +18,6 @@ export default function Home() {
           Writouli
         </h1>
 
-          <EntryEditor />
       </main>
 
       <footer className={styles.footer}>
