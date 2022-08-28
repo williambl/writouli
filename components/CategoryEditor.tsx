@@ -16,7 +16,7 @@ export default function CategoryEditor(props: {category: Category, setCategory: 
             <br/>
             <LabelledTextInput label="Description:" defaultValue={props.category.description} onChange={change => props.setCategory({...props.category, description: change.target.value})} />
             <br/>
-            <LabelledTextInput label="Icon:" defaultValue={props.category.icon} onChange={change => props.setCategory(entry => {return {...entry, icon: change.target.value}})}/>
+            <LabelledTextInput label="Icon:" defaultValue={props.category.icon} onChange={change => props.setCategory({...props.category, icon: change.target.value})}/>
             <br/>
             <LabelledTextInput label="Parent:" defaultValue={props.category.parent} onChange={change => props.setCategory({...props.category, parent: change.target.value})} />
             <br/>

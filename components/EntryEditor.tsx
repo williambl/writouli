@@ -14,7 +14,7 @@ export default function EntryEditor(props: {entry: Entry, setEntry: (Entry) => v
             <br/>
             <LabelledTextInput label="Name:" defaultValue={props.entry.name} onChange={change => props.setEntry({...props.entry, name: change.target.value})} />
             <br/>
-            <LabelledTextInput label="Icon:" defaultValue={props.entry.icon} onChange={change => props.setEntry(entry => {return {...entry, icon: change.target.value}})}/>
+            <LabelledTextInput label="Icon:" defaultValue={props.entry.icon} onChange={change => props.setEntry({...props.entry, icon: change.target.value})}/>
             <br/>
             <label>
                 Pages:
