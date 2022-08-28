@@ -13,6 +13,7 @@
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.2.0",
     "@lexical/react": "^0.3.7",
+    "jszip": "^3.10.1",
     "lexical": "^0.3.7",
     "next": "12.2.2",
     "react": "18.2.0",
