@@ -17,7 +17,7 @@ export class TranslationContext {
 
     addTranslation(key: string, value: string): string {
         const newKey = this.prefix + "." + key;
-        this.translations.translations.set(key, value);
+        this.translations.translations.set(newKey, value);
         return newKey;
     }
 }
