@@ -4,6 +4,7 @@ import {TranslationContext} from "./translations";
 import Category from "./category";
 
 export class Entry {
+    id: string;
     name: string;
     icon: string;
     pages: Page[];
