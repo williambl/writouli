@@ -11,9 +11,9 @@ a {
   text-decoration: none;
 }
 
-input {
+input, textarea {
   margin: 0.1rem 0.5rem;
-  width: 20rem;
+  min-width: 20rem;
 }
 
 label {

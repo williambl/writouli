@@ -2,7 +2,7 @@ import {Entry} from "../lib/entry";
 import PageEditor from "./PageEditor";
 import {nextKey, Page} from "../lib/page";
 import {create, replace} from "../lib/util";
-import LabelledTextInput from "./LabelledTextInput";
+import {LabelledTextInput} from "./LabelledInputs";
 import styles from "../styles/Home.module.css"
 
 export default function EntryEditor(props: {entry: Entry, setEntry: (entry: Entry) => void, removeEntry: (entry: Entry) => void}) {

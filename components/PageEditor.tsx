@@ -2,7 +2,7 @@ import {useState} from "react";
 import {Entry} from "../lib/entry";
 import {Page, setType} from "../lib/page";
 import {replace} from "../lib/util";
-import LabelledTextInput from "./LabelledTextInput";
+import {LabelledTextInput} from "./LabelledInputs";
 
 export default function PageEditor(props: {page: Page, setPage: (Page) => void, removePage: (Page) => void}) {
     return (

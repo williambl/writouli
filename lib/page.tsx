@@ -1,6 +1,10 @@
 import {string} from "prop-types";
 import {Component} from "react";
-import LabelledTextInput from "../components/LabelledTextInput";
+import {
+    LabelledBooleanInput,
+    LabelledTextArea,
+    LabelledTextInput
+} from "../components/LabelledInputs";
 import {EditorState} from "lexical";
 import {Book} from "./book";
 import {TranslationContext} from "./translations";
@@ -64,7 +68,7 @@ const pageFieldsForType: Record<string, (PageField<any>)[]> = {
         new PageField<string>(
             "text",
             "",
-            (changeField) => <LabelledTextInput label="Text:" onChange={c => changeField(c.target.value)} />,
+            (changeField) => <LabelledTextArea label="Text:" onChange={c => changeField(c.target.value)} />,
             (data, page, book, translationContext) => {
                 return translationContext.addTranslation("text", data)
             }
@@ -88,13 +92,13 @@ const pageFieldsForType: Record<string, (PageField<any>)[]> = {
         new PageField<boolean>(
             "border",
             false,
-            (changeField) => <label>Has Border:<input type="checkbox" onChange={c => changeField(c.target.checked)}/></label>,
+            (changeField) => <LabelledBooleanInput label="Has Border:" onChange={c => changeField(c.target.checked)}/>,
             data => data
         ),
         new PageField<string>(
             "text",
             "",
-            (changeField) => <LabelledTextInput label="Text:" onChange={c => changeField(c.target.value)} />,
+            (changeField) => <LabelledTextArea label="Text:" onChange={c => changeField(c.target.value)} />,
             (data, page, book, translationContext) => {
                 return translationContext.addTranslation("text", data)
             }

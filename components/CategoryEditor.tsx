@@ -1,6 +1,6 @@
 import {Entry} from "../lib/entry";
 import {create, randomId, replace} from "../lib/util";
-import LabelledTextInput from "./LabelledTextInput";
+import {LabelledBooleanInput, LabelledTextArea, LabelledTextInput} from "./LabelledInputs";
 import Category from "../lib/category";
 import EntryEditor from "./EntryEditor";
 import {inspect} from "util";
@@ -13,11 +13,11 @@ export default function CategoryEditor(props: {category: Category, setCategory: 
             <button onClick={() => props.removeCategory(props.category)}>-</button>
             <LabelledTextInput label="ID:" defaultValue={props.category.id} onChange={change => props.setCategory(create(props.category, {id: change.target.value}))} />
             <LabelledTextInput label="Name:" defaultValue={props.category.name} onChange={change => props.setCategory(create(props.category, {name: change.target.value}))} />
-            <LabelledTextInput label="Description:" defaultValue={props.category.description} onChange={change => props.setCategory(create(props.category, {description: change.target.value}))} />
+            <LabelledTextArea label="Description:" defaultValue={props.category.description} onChange={change => props.setCategory(create(props.category, {description: change.target.value}))} />
             <LabelledTextInput label="Icon:" defaultValue={props.category.icon} onChange={change => props.setCategory(create(props.category, {icon: change.target.value}))}/>
             <LabelledTextInput label="Parent:" defaultValue={props.category.parent} onChange={change => props.setCategory(create(props.category, {parent: change.target.value}))} />
             <LabelledTextInput label="Flag:" defaultValue={props.category.flag} onChange={change => props.setCategory(create(props.category, {flag: change.target.value}))} />
-            <label>Is Secret:<input type="checkbox" defaultChecked={props.category.secret} onChange={change => props.setCategory(create(props.category, {secret: change.target.value}))} /></label>
+            <LabelledBooleanInput label="Is Secret:" defaultValue={props.category.secret} onChange={change => props.setCategory(create(props.category, {secret: change.target.value}))} />
             <label className={styles.vertical_content}>
                 Entries:
                 <div>

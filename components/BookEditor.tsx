@@ -1,5 +1,5 @@
 import {create, randomId, replace} from "../lib/util";
-import LabelledTextInput from "./LabelledTextInput";
+import {LabelledBooleanInput, LabelledTextInput} from "./LabelledInputs";
 import Category from "../lib/category";
 import {Book} from "../lib/book";
 import CategoryEditor from "./CategoryEditor";
@@ -19,7 +19,7 @@ export default function BookEditor(props: {book: Book, setBook: (book: Book) => 
                     <LabelledTextInput label="Version:" defaultValue={props.book.version} onChange={change => props.setBook(create(props.book, {version: change.target.value}))} />
                     <LabelledTextInput label="Subtitle:" defaultValue={props.book.subtitle} onChange={change => props.setBook(create(props.book, {subtitle: change.target.value}))} />
                     <LabelledTextInput label="Creative Tab:" defaultValue={props.book.creativeTab} onChange={change => props.setBook(create(props.book, {creativeTab: change.target.value}))} />
-                    <label>Is Pamphlet:<input type="checkbox" defaultChecked={props.book.pamphlet} onChange={change => props.setBook(create(props.book, {pamphlet: change.target.value}))} /></label>
+                    <LabelledBooleanInput label="Is Pamphlet:" defaultValue={props.book.pamphlet} onChange={change => props.setBook(create(props.book, {pamphlet: change.target.value}))} />
                     <label className={styles.vertical_content}>
                             Categories:
                             <div>
