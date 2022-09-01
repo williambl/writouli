@@ -42,16 +42,7 @@ export default function Home() {
             </EditorSettingsContext.Provider>
 
             <footer className={styles.footer}>
-                <a
-                    href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    Powered by{' '}
-                    <span className={styles.logo}>
-            <Image src="/vercel.svg" alt="Vercel Logo" width={72} height={16} />
-          </span>
-                </a>
+                Made by Will {'<'}3. Powered by Vercel&apos;s Next.js. Hosted on Netlify. <a href={"https://github.com/williambl/writouli"}>Source code on GitHub</a>.
             </footer>
         </div>
     )
