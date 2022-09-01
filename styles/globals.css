@@ -11,6 +11,19 @@ a {
   text-decoration: none;
 }
 
+input {
+  margin: 0.1rem 0.5rem;
+  width: 20rem;
+}
+
+label {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: 0.2rem;
+  margin-bottom: 0.2rem;
+}
+
 * {
   box-sizing: border-box;
 }
