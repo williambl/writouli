@@ -36,7 +36,7 @@ export class Page {
             'advancement': this.advancement.length === 0 ? undefined : this.advancement,
             'flag': this.flag.length === 0 ? undefined : this.flag,
             'anchor': this.anchor.length === 0 ? undefined : this.anchor,
-            ...this.customFields.map(f => f.toJson(f.data, this, book, translationContext.create(f.name)))
+            ...this.customFields.map(f => f.toJson(f.data, this, book, translationContext))
         }
     }
 }
