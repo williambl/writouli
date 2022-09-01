@@ -15,9 +15,9 @@ export default function CategoryEditor(props: {category: Category, setCategory: 
             <LabelledTextInput label="Name:" defaultValue={props.category.name} onChange={change => props.setCategory(create(props.category, {name: change.target.value}))} />
             <LabelledTextArea label="Description:" defaultValue={props.category.description} onChange={change => props.setCategory(create(props.category, {description: change.target.value}))} />
             <LabelledTextInput label="Icon:" defaultValue={props.category.icon} onChange={change => props.setCategory(create(props.category, {icon: change.target.value}))}/>
-            <LabelledTextInput label="Parent:" defaultValue={props.category.parent} onChange={change => props.setCategory(create(props.category, {parent: change.target.value}))} />
-            <LabelledTextInput label="Flag:" defaultValue={props.category.flag} onChange={change => props.setCategory(create(props.category, {flag: change.target.value}))} />
-            <LabelledBooleanInput label="Is Secret:" defaultValue={props.category.secret} onChange={change => props.setCategory(create(props.category, {secret: change.target.value}))} />
+            <LabelledTextInput label="Parent:" isAdvanced={true} defaultValue={props.category.parent} onChange={change => props.setCategory(create(props.category, {parent: change.target.value}))} />
+            <LabelledTextInput label="Flag:" isAdvanced={true} defaultValue={props.category.flag} onChange={change => props.setCategory(create(props.category, {flag: change.target.value}))} />
+            <LabelledBooleanInput label="Is Secret:" isAdvanced={true} defaultValue={props.category.secret} onChange={change => props.setCategory(create(props.category, {secret: change.target.value}))} />
             <label className={styles.vertical_content}>
                 Entries:
                 <div>

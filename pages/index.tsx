@@ -8,10 +8,12 @@ import {useState} from "react";
 import {Book} from "../lib/book";
 import BookEditor from "../components/BookEditor";
 import createZip from "../lib/saving";
+import EditorSettings, { EditorSettingsContext } from '../lib/editor_context';
 
 export default function Home() {
 
     const [book, setBook] = useState<Book>(new Book());
+    const [editorSettings, setEditorSettings] = useState<EditorSettings>({shouldShowAdvanced: true, setSettings: () => {}})
 
     return (
         <div className={styles.container}>
@@ -21,6 +23,7 @@ export default function Home() {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
+            <EditorSettingsContext.Provider value={{...editorSettings, setSettings: setEditorSettings}}>
             <main className={styles.main}>
                 <h1 className={styles.title}>
                     Writouli
@@ -28,11 +31,15 @@ export default function Home() {
 
                 <BookEditor book={book} setBook={setBook}/>
 
-                <button onClick={async e => {
+                <button onClick={e => {
+                    setEditorSettings({...editorSettings, shouldShowAdvanced: !editorSettings.shouldShowAdvanced})
+                }}>{editorSettings.shouldShowAdvanced ? "Hide" : "Show"} Advanced</button>
+                <button onClick={async () => {
                     saveAs(await createZip(book), "file.zip")
                 }}>Download ZIP</button>
 
             </main>
+            </EditorSettingsContext.Provider>
 
             <footer className={styles.footer}>
                 <a
