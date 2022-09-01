@@ -31,7 +31,7 @@ export default function BookEditor(props: {book: Book, setBook: (book: Book) => 
                                                 removeCategory={toDelete => props.setBook(create(props.book, {categories: props.book.categories.filter(p => p.key !== toDelete.key)}))}
                                             />)
                                     }
-                                    <button onClick={() => props.setBook(create(props.book, {categories: [...props.book.categories, new Category(randomId(), "", "", "", "", "", false, [])]}))}>+</button>
+                                    <button onClick={() => props.setBook(create(props.book, {categories: [...props.book.categories, new Category(randomId().replace(':', '.'), "", "", "", "", "", false, [])]}))}>+</button>
                             </div>
                     </label>
             </fieldset>

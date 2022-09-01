@@ -29,7 +29,7 @@ export default function CategoryEditor(props: {category: Category, setCategory: 
                             removeEntry={toDelete => props.setCategory(create(props.category, {entries: props.category.entries.filter(p => p.key !== toDelete.key)}))}
                         />)
                     }
-                    <button onClick={() => props.setCategory(create(props.category, {entries: [...props.category.entries, new Entry(randomId(), "", "", [])]}))}>+</button>
+                    <button onClick={() => props.setCategory(create(props.category, {entries: [...props.category.entries, new Entry(randomId().replace(':', '.'), "", "", [])]}))}>+</button>
                 </div>
             </label>
         </fieldset>
