@@ -31,3 +31,7 @@ The 'Type' field for a page takes a namespaced ID for the type your page will be
  
 
 Once you've created your book, you can export it with the 'Download ZIP' button at the bottom.
+
+## Contributing Guidelines
+
+This project uses [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/).
